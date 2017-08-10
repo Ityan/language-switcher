@@ -63,7 +63,7 @@ public class Window extends javafx.application.Application {
             if (file.createNewFile()) {
                 isFirstRun = true;
                 if (MAC_OS) {
-                    FIRST_VALUE = Key.COMMAND;
+                    FIRST_VALUE = Key.CONTROL;
                     SECOND_VALUE = Key.SPACE;
                 } else if (WIN_OS) {
                     FIRST_VALUE = Key.WINDOWS;
