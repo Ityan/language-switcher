@@ -26,7 +26,7 @@
         </Label>
         <ChoiceBox fx:id="rightChoiceBox" prefWidth="150.0" />
     </HBox>
-   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="350.0" text="Switched language" textAlignment="CENTER">
+   <Label fx:id="langLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="350.0" text="Switched language" textAlignment="CENTER">
       <font>
          <Font size="15.0" />
       </font>

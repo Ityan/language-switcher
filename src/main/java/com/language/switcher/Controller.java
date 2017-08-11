@@ -4,6 +4,7 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -21,6 +22,8 @@ public class Controller {
     @FXML
     public ChoiceBox<String> langChoiceBox;
     @FXML
+    public Label langLabel;
+    @FXML
     private ChoiceBox<Key> leftChoiceBox;
     @FXML
     private ChoiceBox<Key> rightChoiceBox;
@@ -37,6 +40,8 @@ public class Controller {
         if (MAC_OS) {
             keys.remove(Key.WINDOWS);
         } else {
+            langLabel.setVisible(false);
+            langChoiceBox.setVisible(false);
             keys.remove(Key.COMMAND);
         }
 
