@@ -14,6 +14,9 @@ import org.apache.logging.log4j.Logger;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+import java.util.Properties;
 
 import static com.language.switcher.Constants.*;
 
@@ -24,17 +27,10 @@ public class Window extends javafx.application.Application {
     private boolean isFirstRun = false;
     private Tray tray;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     public void start(Stage stage) throws Exception {
         checkKeys();
 
         PlatformImpl.setImplicitExit(false);
-        if (stage.getStyle() != StageStyle.UTILITY) {
-            stage.initStyle(StageStyle.UTILITY);
-        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/window.fxml"));
         Parent root = loader.load();
         ((Controller) loader.getController()).setStage(stage);
