@@ -9,6 +9,6 @@ public class Constants {
     public static final boolean MAC_OS = System.getProperty("os.name").toLowerCase().contains("mac");
     public static final boolean WIN_OS = System.getProperty("os.name").toLowerCase().contains("win");
 
-    public static final String FIRST_KEY = "SECOND_KEY";
+    public static final String FIRST_KEY = "firstKey";
     public static final String SECOND_KEY = "secondKey";
 }
