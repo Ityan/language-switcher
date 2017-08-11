@@ -76,11 +76,13 @@ public class Window extends javafx.application.Application {
                     FIRST_VALUE = Key.ALT;
                     SECOND_VALUE = Key.SHIFT;
                 }
+                DEFAULT_LANG = "EN";
 
                 config = new PropertiesConfiguration(FILE_NAME);
 
                 config.setProperty(FIRST_KEY, FIRST_VALUE);
                 config.setProperty(SECOND_KEY, SECOND_VALUE);
+                config.setProperty(LANGUAGE_KEY, DEFAULT_LANG);
 
                 config.save();
             } else {
@@ -90,6 +92,7 @@ public class Window extends javafx.application.Application {
             config = new PropertiesConfiguration(FILE_NAME);
             FIRST_VALUE = Key.valueOf(config.getString(FIRST_KEY));
             SECOND_VALUE = Key.valueOf(config.getString(SECOND_KEY));
+            DEFAULT_LANG = config.getString(LANGUAGE_KEY);
         }
     }
 

@@ -19,6 +19,8 @@ import static com.language.switcher.Constants.SECOND_VALUE;
 
 public class Controller {
     @FXML
+    public ChoiceBox<String> langChoiceBox;
+    @FXML
     private ChoiceBox<Key> leftChoiceBox;
     @FXML
     private ChoiceBox<Key> rightChoiceBox;
@@ -40,19 +42,23 @@ public class Controller {
 
         leftChoiceBox.getItems().addAll(keys);
         rightChoiceBox.getItems().addAll(keys);
+        langChoiceBox.getItems().addAll(Arrays.asList("EN", "RU", "UA"));
 
         leftChoiceBox.getSelectionModel().select(FIRST_VALUE);
         rightChoiceBox.getSelectionModel().select(SECOND_VALUE);
+        langChoiceBox.getSelectionModel().select(DEFAULT_LANG);
 
         exitBtn.setOnAction(event -> PlatformImpl.exit());
         saveBtn.setOnAction(event -> {
             FIRST_VALUE = leftChoiceBox.getSelectionModel().getSelectedItem();
             SECOND_VALUE = rightChoiceBox.getSelectionModel().getSelectedItem();
+            DEFAULT_LANG = langChoiceBox.getSelectionModel().getSelectedItem();
 
             try {
                 PropertiesConfiguration config = new PropertiesConfiguration(FILE_NAME);
                 config.setProperty(FIRST_KEY, FIRST_VALUE.name());
                 config.setProperty(SECOND_KEY, SECOND_VALUE.name());
+                config.setProperty(LANGUAGE_KEY, DEFAULT_LANG);
                 config.save();
             } catch (ConfigurationException e) {
                 e.printStackTrace();
