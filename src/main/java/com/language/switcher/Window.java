@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +32,9 @@ public class Window extends javafx.application.Application {
         checkKeys();
 
         PlatformImpl.setImplicitExit(false);
+        if (stage.getStyle() != StageStyle.UTILITY) {
+            stage.initStyle(StageStyle.UTILITY);
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/window.fxml"));
         Parent root = loader.load();
         ((Controller) loader.getController()).setStage(stage);
