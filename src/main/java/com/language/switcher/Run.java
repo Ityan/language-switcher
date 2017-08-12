@@ -13,8 +13,8 @@ public class Run {
             PlatformImpl.setTaskbarApplication(false);
             Properties props = System.getProperties();
             props.put("prism.order", "sw");
-            Application.launch(Window.class, args);
             return null;
         });
+        Application.launch(Window.class, args);
     }
 }

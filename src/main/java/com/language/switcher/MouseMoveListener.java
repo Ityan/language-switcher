@@ -3,7 +3,6 @@ package com.language.switcher;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import org.apache.commons.lang.StringUtils;
 
 import java.awt.*;
 
@@ -35,16 +34,10 @@ public class MouseMoveListener {
 
                                 if (MAC_OS) {
                                     String currentLang = executor.currentLanguage();
-                                    if (StringUtils.containsIgnoreCase(currentLang, DEFAULT_LANG)
-                                            && !PREV_LANG.equalsIgnoreCase(DEFAULT_LANG)) {
-                                        while (!StringUtils.containsIgnoreCase(executor.currentLanguage(), PREV_LANG)) {
-                                            switchLang();
-                                        }
-                                    } else if (!StringUtils.containsIgnoreCase(currentLang, DEFAULT_LANG)) {
-                                        PREV_LANG = currentLang;
-                                        while (!StringUtils.containsIgnoreCase(executor.currentLanguage(), DEFAULT_LANG)) {
-                                            switchLang();
-                                        }
+                                    if (currentLang.equalsIgnoreCase(DEFAULT_LANG)) {
+                                        switchLang();
+                                    } else {
+                                        executor.switchLang(DEFAULT_LANG);
                                     }
                                 } else {
                                     switchLang();

@@ -14,11 +14,11 @@ public class Executor {
     private static final Logger LOG = LogManager.getLogger(Executor.class);
 
     private static final String[] CURRENT_LANGUAGE = {"osascript", "-e",
-            "tell application \"System Events\" " +
-                    "to tell process \"SystemUIServer\" " +
-                    "to get the value of the first menu bar " +
-                    "item of menu bar 1 whose description is \"text input\"" +
-                    "end tell"};
+            "tell application \"System Events\" to tell process \"SystemUIServer\"\n" +
+            "    tell (1st menu bar item of menu bar 1 whose value of attribute \"AXDescription\" is \"text input\")\n" +
+            "        return value\n" +
+            "    end tell\n" +
+            "end tell"};
 
     private final Runtime runtime;
 
@@ -43,6 +43,15 @@ public class Executor {
         }
 
         return result;
+    }
+
+    public void switchLang(String lang) {
+        String[] SET_LANG = {"osascript", "-e",
+                "tell application \"System Events\" to tell process \"SystemUIServer\"\n" +
+                "        tell (1st menu bar item of menu bar 1 whose description is \"text input\") " +
+                "        to {click, click (menu 1's menu item \"" + lang + "\")}\n" +
+                "end tell"};
+        exec(SET_LANG);
     }
 
     private Process exec(String[] script) {
