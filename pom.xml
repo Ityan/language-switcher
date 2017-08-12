@@ -39,6 +39,7 @@
                 <version>8.6.0</version>
                 <configuration>
                     <mainClass>com.language.switcher.Run</mainClass>
+                    <identifier></identifier>
                     <vendor>RCS</vendor>
                     <needShortcut>true</needShortcut>
                     <needMenu>true</needMenu>

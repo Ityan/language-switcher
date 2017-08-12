@@ -44,7 +44,10 @@ public class Tray {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     if (e.getButton() == MouseEvent.BUTTON1) {
-                        PlatformImpl.runLater(stage::show);
+                        PlatformImpl.runLater(() -> {
+                            stage.show();
+                            stage.toFront();
+                        });
                     }
                 }
             });

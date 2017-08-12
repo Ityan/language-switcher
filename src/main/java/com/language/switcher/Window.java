@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.logging.log4j.LogManager;
@@ -14,9 +13,6 @@ import org.apache.logging.log4j.Logger;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-import java.util.Properties;
 
 import static com.language.switcher.Constants.*;
 
@@ -36,7 +32,7 @@ public class Window extends javafx.application.Application {
         ((Controller) loader.getController()).setStage(stage);
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.sizeToScene();
+        stage.setWidth(350);
 
         if (isFirstRun) {
             stage.show();
@@ -65,6 +61,9 @@ public class Window extends javafx.application.Application {
                 if (MAC_OS) {
                     FIRST_VALUE = Key.CONTROL;
                     SECOND_VALUE = Key.SPACE;
+
+                    Executor executor = new Executor();
+                    DEFAULT_LANG = executor.currentLanguage();
                 } else if (WIN_OS) {
                     FIRST_VALUE = Key.WINDOWS;
                     SECOND_VALUE = Key.SPACE;
@@ -72,7 +71,6 @@ public class Window extends javafx.application.Application {
                     FIRST_VALUE = Key.ALT;
                     SECOND_VALUE = Key.SHIFT;
                 }
-                DEFAULT_LANG = "EN";
 
                 config = new PropertiesConfiguration(FILE_NAME);
 
