@@ -50,7 +50,7 @@
         <Separator orientation="VERTICAL" prefHeight="200.0" />
     </HBox>
     <VBox fx:id="langBox" prefHeight="200.0" prefWidth="200.0">
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="200.0" text="Please switch language &#10;before You didn't see &#10;needed one.&#10;" textAlignment="CENTER" />
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="85.0" prefWidth="200.0" text="Please switch language &#10;until You didn't see &#10;needed one.&#10;" textAlignment="CENTER" />
         <Label fx:id="saveLangLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="200.0" textAlignment="CENTER" textFill="#64b93d" />
         <HBox alignment="TOP_CENTER" prefHeight="43.0" prefWidth="200.0" spacing="20">
             <Button fx:id="saveLangBtn" mnemonicParsing="false" prefHeight="22.0" prefWidth="70.0" text="Save" />
